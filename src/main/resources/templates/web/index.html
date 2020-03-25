@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>excel的导入与导出</title>
@@ -21,6 +20,7 @@
 <script type="text/javascript"  th:src="@{/layui/layui.js}"></script>
 
 <script>
+    //导入excel
     layui.use('upload', function() {
         var $ = layui.jquery,
             upload = layui.upload;
@@ -42,6 +42,10 @@
             }
         });
     })
+
+    /**
+     * 导出excel
+     */
     function exportExcel() {
         window.location.href="http://localhost/export";
 
