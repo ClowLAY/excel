@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>excel的导入与导出</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all" />
+</head>
+<body>
+<button onclick="exportExcel();"><h4>导出Excel</h4></button></br>
+
+<fieldset class="layui-elem-field " style="margin-top: 30px;">
+    <legend>选择要导入的资产文件</legend>
+</fieldset>
+<div class="layui-upload">
+    <button type="button" class="layui-btn " id="test8"><i class="layui-icon"></i>选择文件</button>
+    <button type="button" class="layui-btn" id="test9">开始上传</button>
+</div>
+
+</body>
+<script type="text/javascript"  th:src="@{/layui/layui.js}"></script>
+
+<script>
+    layui.use('upload', function() {
+        var $ = layui.jquery,
+            upload = layui.upload;
+
+        upload.render({
+            elem: '#test8',
+            url: 'http://localhost/import', //改成您自己的上传接口
+            auto:false,
+            accept: 'file',
+            bindAction: '#test9',
+            done: function(res){
+                if (res['result'] == 'fail'){
+                    layer.msg(res['cause']);
+                } else{
+                    layer.msg('上传成功');
+                }
+
+                console.log(res)
+            }
+        });
+    })
+    function exportExcel() {
+        window.location.href="http://localhost/export";
+
+    }
+
+
+
+
+</script>
+</html>
