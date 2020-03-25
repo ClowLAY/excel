@@ -104,6 +104,8 @@ public class ExcelService {
             root.put("cause","数据解析失败");
             return root;
         }
+
+        //dataList表示拿到excel的数据列表，这里不做存储，只输出
         dataList.forEach(data->{
             for (var i=0;i<data.length-1;i++){
                 System.out.print(data[i]+"\t");
